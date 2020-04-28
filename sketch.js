@@ -28,7 +28,6 @@ function setup() {
   const cnv = createCanvas(canDimensions, canDimensions);
   cnv.position(displayWidth / 2 - 300, displayHeight / 2 - 450);
   cnv.drop(gotFile);
-  alert("Testing");
   
   // Console
   console.log(`Made By Ethan Knotts`);
