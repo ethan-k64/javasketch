@@ -1,3 +1,8 @@
+/*
+*Made By Ethan Knotts
+*Please don't steal my code.
+*/
+
 // Variables
 let value = [0, 0, 0];
 let trans;
@@ -25,8 +30,9 @@ function setup() {
   cnv.drop(gotFile);
 
   // Console
-  console.log("Display Width: " + displayWidth);
-  console.log("Display Height: " + displayHeight);
+  console.warn(`Made By Ethan Knotts`);
+  console.log(`Display Width: ${displayWidth}`);
+  console.log(`Display Height: ${displayHeight}`);
 
   // Extra Props
   ellipseMode(RADIUS);
