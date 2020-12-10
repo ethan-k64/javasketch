@@ -1,9 +1,5 @@
-/*
-*Made By Ethan Knotts
-*Please don't steal my code.
-*/
-
-// Variables
+// Global Variables
+let cnv;
 let value = [0, 0, 0];
 let trans;
 let saveButton;
@@ -15,7 +11,8 @@ let gslider;
 let bslider;
 let tslider;
 let colShow;
-let canDimensions = 600;
+let w = 600;
+let h = 600;
 
 let r;
 let g;
@@ -25,14 +22,14 @@ let s;
 
 function setup() {
   // Canvas Props
-  const cnv = createCanvas(canDimensions, canDimensions);
+  cnv = createCanvas(w, h);
   cnv.position(displayWidth / 2 - 300, displayHeight / 2 - 450);
+  cnv.style("border", `rgb(${value[0].toString()}, ${value[1].toString()}, ${value[2].toString()}) 2px solid`);
   cnv.drop(gotFile);
-  
+
   // Console
-  console.log(`Made By Ethan Knotts`);
-  console.log(`Display Width: ${displayWidth}`);
-  console.log(`Display Height: ${displayHeight}`);
+  console.log("Display Width: " + displayWidth);
+  console.log("Display Height: " + displayHeight);
 
   // Extra Props
   ellipseMode(RADIUS);
@@ -46,7 +43,7 @@ function setup() {
   saveButton.position(displayWidth / 2 - 30, displayHeight / 2 + 200);
 
   clearButton = createButton('Clear');
-  clearButton.mousePressed(clearCanvas);
+  clearButton.mousePressed(clearBackground);
   clearButton.position(displayWidth / 2 + 20, displayHeight / 2 + 200);
 
   slider = createSlider(1, 100, 5, 1);
@@ -111,23 +108,19 @@ function draw() {
     line(mouseX, mouseY, pmouseX, pmouseY);
   }
 
-  // Call Functions
-  borders();
+  cnv.style("border", `rgb(${value[0].toString()}, ${value[1].toString()}, ${value[2].toString()}) 2px solid`);
 }
 
 
 // Functions
 function saveDrawing() {
-  fill(51);
-  rect(0, 200, 2, 800);
-  rect(600, 200, 2, 800);
-  rect(300, 600, 600, 2);
-  rect(300, 0, 600, 2);
+  cnv.style("border", `rgba(${value[0].toString()}, ${value[1].toString()}, ${value[2].toString()}, 0) 2px solid`);
+  //background(51, 51, 51, 0);
   save('drawing.png');
 }
 
-function clearCanvas() {
-  background(51);
+function clearBackground() {
+  clear();
 }
 
 function gotFile(file) {
@@ -135,14 +128,4 @@ function gotFile(file) {
   img.hide();
   
   image(img, 0, 0, width, height);
-}
-
-function borders() {
-  fill(value[0], value[1], value[2]);
-  noStroke();
-
-  rect(0, 200, 2, 800);
-  rect(600, 200, 2, 800);
-  rect(300, 600, 600, 2);
-  rect(300, 0, 600, 2);
 }
